@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index2 - HTML</title>
+    <script language="javascript" type="text/javascript" src="app.js"></script>
+</head>
+<body>
+    <h1>WELCOME!!!!!</h1>
+    <div id="index2"></div>
+
+    <p id="word"></p>
+    <script>
+        window.addEventListener("keypress", checkKeyPress, false);
+
+        function checkKeyPress(key){
+            if(key.keyCode == "13"){
+                var words = ['clock', 'jumping', 'bottle', 'table', 'computer', 'message', 'orange', 'python', 'javascript', 'nature', 'volume',
+            'calculus', 'deltoid', 'cricket', 'heart', 'sanitize', 'social', 'velocity', 'capacity', 'travel', 'keyboard', 'forest', 'number', 'rain',
+            'biology', 'civil', 'property', 'value', 'website', 'technology', 'cliff', 'chain', 'multiple', 'cautious', 'generous', 'sequence', 'force',
+            'complex', 'displacement', 'logic', 'programming', 'interface', 'schedule', 'equation', 'expression', 'scope', 'parallel', 'aluminium',
+            'procedures', 'extra', 'interview', 'process', 'integrate', 'function', 'modern', 'culture', 'implement', 'series', 'lemon', 'distance',
+            'nostalgic', 'guilty', 'grammar', 'developer', 'glass', 'software', 'designer', 'tough', 'achieve', 'container', 'empty', 'elevation',
+            'angle', 'depression', 'bearing', 'south', 'generate', 'stubborn', 'master', 'establish', 'cousin', 'algebra', 'creative', 'science',
+            'fetch', 'decimal', 'business', 'engineer', 'ancient', 'forensic', 'pandemic', 'quarantine', 'certain', 'measure', 'acceleration',
+            'college', 'destination', 'event', 'manipulate', 'selector', 'while', 'identify', 'depth', 'ergonomics', 'indent', 'network',
+            'except', 'report', 'unicorn', 'sample', 'document', 'construct', 'tourist', 'customer', 'handler', 'designer', 'comedy',
+            'hungry', 'electricity', 'escape', 'september', 'series', 'playable', 'generate', 'character', 'plaster', 'repair'];
+        
+        var word = words[Math.floor(Math.random() * words.length)];
+        
+        
+        document.getElementById("word").textContent = word;
+
+
+            }
+            }
+    </script>
+    <!-- <a href="/">Back to Form</a> -->
+    
+</body>
+</html>

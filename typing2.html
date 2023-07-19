@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+
+    <link href="typing.css" rel="stylesheet" type="text/css">
+    <script language="javascript" type="text/javascript" src="app.js"></script>
+    
+    <title>Test your typing skills</title>
+
+</head>
+<body style="background-image: url(https://www.publicdomainpictures.net/pictures/240000/velka/color-gradient-background.jpg);" class="container text-center">
+  
+    <h1 style="text-align: center; font-size: 65px; font-family:'Times New Roman', Times, serif; text-shadow: 3px 3px 6px maroon"><i><b> Welcome to Typing Speed Test </b></i></h1>
+
+    <p id="countdown_Timer" style="font-size: 39px; font-family:Georgia, 'Times New Roman', Times, serif; font-style: italic; position: absolute; display: inline-block"></p>
+    <!-- <script language="javascript" type="text/javascript" src="app.js"></script> -->
+
+    <br>
+
+    <p id="text_box"></p>
+
+    <p id="countdown" style="font-size: 40px; color:darkgreen; font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic; font-style: bold; text-align: center"></p>
+    <div id= "startButtons">
+      <p id="info_text" class="info_text" style="font-size: 25px; text-align: center">Please press the 'Start Typing' button before you start the game </p>
+        <!-- CENTER THIS BUTTON --> <button onclick="start()" id="gameStart" class="gameStart" style="font-size: 25px; border: 2px inset darkgrey">Start Typing</button>
+
+    
+    <script style="align-items: center">
+      var timeleft = 60;
+      
+
+      window.addEventListener("keypress", randomWord, false);
+
+        function randomWord(key){
+            if(key.keyCode == "13"){
+
+      document.getElementById("info_text").innerHTML = ("<style>.info_text(visibility: collapse)")
+      document.getElementById("gameStart").innerHTML = ("<style>.gameStart(visibility: none)")
+      document.getElementById("text_box").innerHTML = ("<label>Computer</label><input type='text'>");
+    
+      
+    var downloadTimer = setInterval(function function1(){ 
+    document.getElementById("countdown").innerHTML = timeleft + "&nbsp"+"seconds left";
+    
+    timeleft -= 1;
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+    
+    document.getElementById("countdown").innerHTML = "The time is up!"
+      }
+    }, 1000);
+  
+    }
+  }
+
+</script>
+
+<div style="text-align: center; display: block; outline: maroon">
+<!-- <textarea id="text" class="text" rows="8" cols="55" style="resize: none"></textarea> -->
+</div>
+
+<p id="demo"></p>
+
+<!-- <script>
+function myFunction() {
+  var x = document.getElementById("myInput").value;
+  document.getElementById("demo").innerHTML = "You wrote: " + x;
+}
+</script> -->
+
+<input type="text" id="hello">
+
+<script>
+  window.addEventListener("keypress", randomWord, false);
+
+function randomWord(key){
+    if(key.keyCode == "32"){
+      document.getElementById('hello').disabled = true;
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+<p id="countdown"></p>
+
+<script>
+  var timeleft = 60;
+
+timeleft -= 1;
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+    
+    document.getElementById("countdown").innerHTML = "The time is up!"
+      } 1000;
+</script>

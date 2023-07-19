@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typing Speed Test</title>
+
+    <script language="javascript" type="text/javascript" src="last_typing.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+</head>
+
+<body
+    style="color: red; background-image: url('https://www.publicdomainpictures.net/pictures/240000/velka/color-gradient-background.jpg')">
+
+    <header style="background-color: cyan; padding: 3; text-align: center; margin-bottom: 5">
+        <h1 style="color: black;font-size: 70px; text-align: center; padding: 25px; text-shadow: 3px 3px 6px purple; 
+            font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">Welcome to the typing speed
+            test</h1>
+    </header>
+    <div class="container" style="text-align: center">
+
+        <div class="row">
+            <div class="col-md-6" style="margin: auto">
+                <p style="padding-top: 30px" id="para1"><em>You can press "ENTER" key on your keyboard
+                        when you are ready to start typing test<span style="color: green" id="seconds">
+                </p>
+
+                <h2 id="word" style="font-style: italic; font-size: 45px;"></h2>
+
+                <script>
+                    // Random words 'ARRAY' from the start of the game //
+                    var words = ['clock', 'jumping', 'bottle', 'table', 'computer', 'message', 'orange', 'python', 'javascript', 'nature',
+                        'volume', 'calculus', 'deltoid', 'cricket', 'heart', 'sanitize', 'social', 'velocity', 'capacity', 'travel', 'keyboard',
+                        'forest', 'number', 'rain', 'biology', 'civil', 'property', 'value', 'website', 'technology', 'cliff', 'chain', 'multiple',
+                        'cautious', 'generous', 'sequence', 'force', 'complex', 'displacement', 'logic', 'programming', 'interface', 'schedule',
+                        'equation', 'expression', 'scope', 'parallel', 'aluminium', 'procedures', 'extra', 'interview', 'process', 'integrate',
+                        'function', 'modern', 'culture', 'implement', 'series', 'lemon', 'distance', 'nostalgic', 'guilty', 'grammar', 'developer',
+                        'glass', 'software', 'designer', 'tough', 'achieve', 'container', 'empty', 'elevation', 'angle', 'depression', 'bearing',
+                        'south', 'generate', 'stubborn', 'master', 'establish', 'cousin', 'algebra', 'creative', 'science', 'fetch', 'decimal',
+                        'business', 'engineer', 'ancient', 'forensic', 'pandemic', 'quarantine', 'certain', 'measure', 'acceleration', 'college',
+                        'destination', 'event', 'manipulate', 'selector', 'while', 'identify', 'depth', 'ergonomics', 'indent', 'network', 'except',
+                        'report', 'unicorn', 'sample', 'document', 'construct', 'tourist', 'customer', 'handler', 'designer', 'comedy', 'hungry',
+                        'electricity', 'escape', 'september', 'series', 'playable', 'generate', 'character', 'plaster', 'repair', 'absolute',
+                        'blissful', 'zoology', 'punctuation', 'parachute', 'incorrect', 'satisfactory', 'business', 'compression', 'courtesy',
+                        'compound', 'external', 'digital', 'monitor', 'hardware', 'binary', 'agreement', 'figure', 'conflict', 'reconcile',
+                        'communicate', 'raise', 'oxygen', 'junction', 'discover', 'solar', 'apple', 'structure', 'whisker', 'percent', 'ampersand',
+                        'curve', 'gigantic', 'ocean', 'gorilla', 'window', 'return', 'possible', 'accuracy', 'dynamite', 'gamer', 'brother', 'office',
+                        'accentuate', 'underline', 'gossip', 'prominent', 'sour', 'bitter', 'epic', 'battle', 'history', 'duplicate', 'tuple',
+                        'animate', 'campaign', 'contigency', 'corrective', 'constant', 'marketing', 'analytics', 'legislation', 'stakeholder',
+                        'entrepreneur', 'rythm', 'watermelon', 'hose', 'multimedia', 'hyperlink', 'craft', 'inorganic', 'interpersonal', 'individual',
+                        'risky', 'celebrate', 'sporty', 'influence', 'variable', 'vulnerable', 'minute', 'numerous', 'distinguish', 'corrosion', 'exponent'];
+
+                    // Random words 'GENERATOR' from the start of the game //
+                    var word = words[Math.floor(Math.random() * words.length)];
+
+                    // Random words 'DISPLAY' from the start of the game //
+                    document.getElementById("word").textContent = word;
+
+                </script>
+
+                <!-- Input text field for user to type in his/ her given random words on screen -->
+                <input name="box" type="text" style="width: 100%; text-align: center" class="form-control-lg"
+                    placeholder="Type the word..." id="word-type" disabled>
+
+                <!-- Restart Button creation and style -->
+                <button type="reset" id="again" onclick="restart()"
+                    style="margin-top: 20px; padding: 10px 24px; background-color: tomato; color: white; font-size: 30px; border-radius: 11px"
+                    disabled>Restart</button>
+
+                <script>
+                    // Function of clicking on the restart button according to the onclick event from HTML above //
+                    function restart() {
+                        location.href = "index.html"; // For locating back to the start/ index page //
+                    }
+                </script>
+
+                <h4 style="margin-top: 3" id="message"></h4>
+
+                <p id="countdown" style="font-size: 40px; color:darkgreen; font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic; font-style: bold; 
+                    text-align: center">
+                </p>
+
+
+                <script>
+
+                    // For start typing by pressing "ENTER" key on keyboard //
+
+                    window.addEventListener("keypress", randomWord, false);
+
+                    function randomWord(key) {
+                        if (key.keyCode == "13") {
+
+                            // For making the text input field "enabled" so the user can start typing //
+                            document.getElementById('word-type').disabled = false;
+
+                            // For making the text input field "autofocus" so the user can start typing //
+                            document.getElementById('word-type').focus();
+
+                            // Making the unneeded and unnecessary text on the web page disappear so the user can focus on typing his words //
+                            document.getElementById('h5').innerHTML = "<style>.h5 (visibility: none)";
+                            document.getElementById('h1').innerHTML = "<style>.h1 (visibility: none";
+                            document.getElementById('para1').innerHTML = "<style>.para1 (visibility: none)";
+                            document.getElementById('para2').innerHTML = "<style>.para2 (visibility: none)";
+                            document.getElementById('div-grey').innerHTML = "<style>.div-grey (visibility: none)";
+
+                            // 60 seconds timer Code 
+                            var timeleft = 60;
+
+                            // Time running (decrementing)
+                            var downloadTimer = setInterval(function function1() {
+                                document.getElementById("countdown").innerHTML = timeleft + "&nbsp" + "seconds left";
+
+                                // For time up
+                                timeleft -= 1;
+                                if (timeleft <= 0) {
+                                    clearInterval(downloadTimer);
+
+                                    // Display when time is up
+                                    document.getElementById("countdown").innerHTML = "The time is up!!! We suggest you to take a five minutes break and relax your fingers \n Press 'ENTER' to start again";
+
+                                    document.getElementById('words').value = ''; // For clearing inputs from user //
+
+                                    document.getElementById('word-type').disabled = true; // Input text field should be enabled when timer starts //
+
+                                    document.getElementById('again').disabled = false; // The restart button should be enabled after the game is finished //
+
+
+                                    // Disappear words after typing 
+                                    document.getElementById('word').innerHTML = '';
+
+                                    // Speed results (The ranking of the user (noob, mediocre, pro) according to his/her score) //
+                                    var level = document.getElementById("words").value;
+                                    if (level < 20) {
+                                        alert("Your typing speed is slow")
+                                        document.getElementById('words').innerHTML = "Your typing speed is <em><i>Slow</em></i>"
+
+                                    } else if (level < 30) {
+                                        alert("Your typing speed is average")
+                                        document.getElementById('words').value = "Your typing speed is <em><i>Average</em></i>"
+
+                                    } else if (level > 30) {
+                                        alert("Your typing speed is pro")
+                                        document.getElementById('words').innerHTML = "Your typing speed is <em><i>Pro</em></i>"
+                                    }
+
+                                }
+                            }, 1000);
+
+                        }
+
+                    }
+                </script>
+
+
+                <script>
+
+                    // For score incrementation once finishing typing each word and pressing "ENTER" //
+                    window.addEventListener("keypress", randomWord, false);
+
+                    var count = (function () {
+
+                        // Pressing "SPACE" everytime === incrementing score //
+                        var counter = 0;
+                        return function () { return counter += 1; }
+                    })();
+
+                    // Function with paramater of "key" refering to the keypress which is "SPACE" key on keyboard //
+                    function randomWord(key) {
+                        if (key.keyCode == "32") {
+
+                            document.getElementById('words').innerHTML = count();
+
+                            document.getElementById('word-type').innerHTML = "<style>.word-type (pointer-events: none);";
+                        }
+                    }
+
+                </script>
+
+
+                <script>
+                    // Array of Random words display after pressing "ENTER" and the timer starts //
+                    window.addEventListener("keypress", randomWord, false);
+
+                    function randomWord(key) {
+                        if (key.keyCode == "32") {
+
+                            // Display of random words once time starts to decrement from 60 to 0 //
+                            var words = ['clock', 'jumping', 'bottle', 'table', 'computer', 'message', 'orange', 'python', 'javascript', 'nature',
+                                'volume', 'calculus', 'deltoid', 'cricket', 'heart', 'sanitize', 'social', 'velocity', 'capacity', 'travel', 'keyboard',
+                                'forest', 'number', 'rain', 'biology', 'civil', 'property', 'value', 'website', 'technology', 'cliff', 'chain', 'multiple',
+                                'cautious', 'generous', 'sequence', 'force', 'complex', 'displacement', 'logic', 'programming', 'interface', 'schedule',
+                                'equation', 'expression', 'scope', 'parallel', 'aluminium', 'procedures', 'extra', 'interview', 'process', 'integrate',
+                                'function', 'modern', 'culture', 'implement', 'series', 'lemon', 'distance', 'nostalgic', 'guilty', 'grammar', 'developer',
+                                'glass', 'software', 'designer', 'tough', 'achieve', 'container', 'empty', 'elevation', 'angle', 'depression', 'bearing',
+                                'south', 'generate', 'stubborn', 'master', 'establish', 'cousin', 'algebra', 'creative', 'science', 'fetch', 'decimal',
+                                'business', 'engineer', 'ancient', 'forensic', 'pandemic', 'quarantine', 'certain', 'measure', 'acceleration', 'college',
+                                'destination', 'event', 'manipulate', 'selector', 'while', 'identify', 'depth', 'ergonomics', 'indent', 'network', 'except',
+                                'report', 'unicorn', 'sample', 'document', 'construct', 'tourist', 'customer', 'handler', 'designer', 'comedy', 'hungry',
+                                'electricity', 'escape', 'september', 'series', 'playable', 'generate', 'character', 'plaster', 'repair', 'absolute',
+                                'blissful', 'zoology', 'punctuation', 'parachute', 'incorrect', 'satisfactory', 'business', 'compression', 'courtesy',
+                                'compound', 'external', 'digital', 'monitor', 'hardware', 'binary', 'agreement', 'figure', 'conflict', 'reconcile',
+                                'communicate', 'raise', 'oxygen', 'junction', 'discover', 'solar', 'apple', 'structure', 'whisker', 'percent', 'ampersand',
+                                'curve', 'gigantic', 'ocean', 'gorilla', 'window', 'return', 'possible', 'accuracy', 'dynamite', 'gamer', 'brother', 'office',
+                                'accentuate', 'underline', 'gossip', 'prominent', 'sour', 'bitter', 'epic', 'battle', 'history', 'duplicate', 'tuple',
+                                'animate', 'campaign', 'contigency', 'corrective', 'constant', 'marketing', 'analytics', 'legislation', 'stakeholder',
+                                'entrepreneur', 'rythm', 'watermelon', 'hose', 'multimedia', 'hyperlink', 'craft', 'inorganic', 'interpersonal', 'individual',
+                                'risky', 'celebrate', 'sporty', 'influence', 'variable', 'vulnerable', 'minute', 'numerous', 'distinguish', 'corrosion', 'exponent'];
+
+                            // Random word generator from the Array above //
+                            var word = words[Math.floor(Math.random() * words.length)];
+
+                            // Display of random word from the Array/code above //
+                            document.getElementById("word").textContent = word;
+                        }
+                    }
+                </script>
+
+                <script>
+                    
+                    // For clearing input text field value after pressing 'SPACE' key each time //
+                    window.addEventListener("keypress", randomWord, false);
+
+                    function randomWord(key) {
+                        if (key.keyCode == "32") {
+                            document.getElementById('word-type').value = '';
+                        }
+                    }
+                </script>
+
+                <!-- Time and Score columns -->
+                <div class="row" style="margin-top: 5">
+                    <div style="text-align: center; font-size: 25px">
+                        <h3>Your score:
+                            <span id="words" onkeypress="randomWord()">0</span>
+                            <!-- Default value of user's score from the beginning of the game -->
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- The instructions and procedures of the game -->
+                <div id="div-grey" class="row" style="margin-top: 5">
+                    <div class="col-md-12">
+                        <div class="card card-body" style="background-color: gray; color: black">
+                            <h5 id="h5">Instructions / Procedures</h5>
+                            <!-- The instructions of the game so the user can read, understand and play -->
+                            <p id="para2">Type all the words correctly as possible and the timer will stop on 60 seconds
+                                If you want to start the game again and restart, press the "restart" button above.
+                            </p>
+
+                            <br>
+
+                            <h1 style="font-style: italic; color: yellowgreen" id="h1">ENJOY THE GAME !!!<br></h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
